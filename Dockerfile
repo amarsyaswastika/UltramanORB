@@ -1,10 +1,14 @@
 FROM nginx:alpine
 
-# Hapus config default
-RUN rm -rf /usr/share/nginx/html/*
+# Hapus default config nginx
+RUN rm /etc/nginx/conf.d/default.conf
 
-# Copy file web ke nginx
-COPY UltramanORB-main/ /usr/share/nginx/html/
+# Copy config nginx custom
+COPY nginx.conf /etc/nginx/conf.d/
 
-# Expose port nginx
-EXPOSE 80
+# Copy source website ke nginx html folder
+COPY nufianhospital /usr/share/nginx/html
+
+EXPOSE 3300
+
+CMD ["nginx", "-g", "daemon off;"]
