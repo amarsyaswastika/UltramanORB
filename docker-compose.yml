@@ -1,0 +1,9 @@
+version: "3.8"
+
+services:
+  nufian-hospital:
+    build: .
+    container_name: nufian_hospital_web
+    ports:
+      - "3300:3300"
+    restart: always
