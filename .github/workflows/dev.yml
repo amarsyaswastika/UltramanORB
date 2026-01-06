@@ -1,0 +1,13 @@
+name: Development CI
+
+on:
+  push:
+    branches: [ "develop" ]  # <--- Ini kuncinya, diganti jadi develop
+
+jobs:
+  test-dev:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Run echo test dev
+      run: echo "CI/CD Development berhasil jalan 🚧"
