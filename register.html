@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Login • Cyber Shield IDN</title>
+<title>Register • Cyber Shield IDN</title>
 
 <link rel="icon" href="assets/img/favicon.png">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -40,7 +40,7 @@ body {
 /* card */
 .login-box {
   position: relative;
-  width: 380px;
+  width: 420px;
   padding: 42px 38px;
   border-radius: 22px;
   background: rgba(255, 255, 255, 0.08);
@@ -161,13 +161,18 @@ button:hover {
 <div class="bg-blur two"></div>
 
 <div class="login-box">
-  <h1>Sign In</h1>
-  <p>Secure access to Cyber Shield IDN</p>
+  <h1>Sign Up</h1>
+  <p>Create your Cyber Shield IDN account</p>
 
-  <form>
+  <form id="form-pendaftaran">
     <div class="field">
-      <input type="text" required placeholder=" ">
-      <label>Username</label>
+      <input type="text" id="nama" required placeholder=" ">
+      <label>Full Name</label>
+    </div>
+
+    <div class="field">
+      <input type="email" id="email" required placeholder=" ">
+      <label>Email Address</label>
     </div>
 
     <div class="field">
@@ -190,16 +195,21 @@ button:hover {
       </div>
     </div>
 
-    <button type="submit">Login</button>
+    <div class="field">
+      <input type="password" required placeholder=" ">
+      <label>Confirm Password</label>
+    </div>
+
+    <button type="submit" id="btn-kirim">Register</button>
   </form>
 
   <div class="footer">
-    Don't have an account? <a href="register.html">Sign Up</a>
-    <br>
-    <br>
-    Forgot password? <a href="#">Recover</a>
+    Already have an account? <a href="login.html">Sign In</a>
   </div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script src="assets/js/email-script.js"></script>
 
 <script>
 const pass = document.getElementById("password");
