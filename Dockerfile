@@ -7,7 +7,7 @@ RUN rm /etc/nginx/conf.d/default.conf
 COPY nginx.conf /etc/nginx/conf.d/
 
 # 3. Copy source website
-COPY nufianhospital /usr/share/nginx/html
+COPY ultramanorb /usr/share/nginx/html
 
 # 4. Buat user dan grup non-root
 RUN addgroup -S appgroup && adduser -S appuser -G appgroup
