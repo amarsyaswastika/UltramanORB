@@ -1,0 +1,48 @@
+name: Semgrep Security Scan
+
+on:
+  # Workflow akan jalan saat ada Push ke branch main atau master
+  push:
+    branches: [ "main", "dev" ]
+  # Workflow juga jalan saat ada Pull Request
+  pull_request:
+    branches: [ "main", "dev" ]
+  # Biar bisa dijalankan manual lewat tab Actions
+  workflow_dispatch:
+
+jobs:
+  semgrep:
+    name: Scan Keamanan
+    runs-on: ubuntu-latest
+    
+    # IZIN: Sangat penting agar bisa upload ke tab Security
+    permissions:
+      security-events: write
+      actions: read
+      contents: read
+
+    container:
+      # Menggunakan docker image resmi Semgrep
+      image: returntocorp/semgrep
+
+    steps:
+      # 1. Ambil kodingan dari repository
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2. Jalankan Semgrep
+      - name: Run Semgrep Scan
+        run: |
+          echo "Sedang memindai kode..."
+          # Scan menggunakan aturan OWASP Top 10
+          # --sarif: Format output khusus untuk GitHub Security
+          # --output: Simpan hasil ke file bernama semgrep.sarif
+          semgrep scan --config=p/owasp-top-ten --sarif --output=semgrep.sarif
+
+      # 3. Upload hasil scan ke Tab Security GitHub
+      - name: Upload hasil ke GitHub Code Scanning
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: semgrep.sarif
+        # Tetap jalankan langkah ini walau semgrep menemukan error/bug
+        if: always()
