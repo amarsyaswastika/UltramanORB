@@ -10,7 +10,7 @@ export const options = {
   ],
   cloud: {
     // Nama Project di Grafana Cloud Anda
-    projectID: 123456, // Ganti dengan Project ID dari Grafana Cloud Anda
+    projectID: 6377685, // Ganti dengan Project ID dari Grafana Cloud Anda
     name: 'Test GitHub Pages Saya',
   },
 };
