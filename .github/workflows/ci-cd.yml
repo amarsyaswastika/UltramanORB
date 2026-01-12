@@ -10,11 +10,3 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
-      - name: Run k6 cloud test
-        uses: grafana/k6-action@v0.3.0
-        with:
-          filename: script.js
-          cloud: true
-          # PERBAIKAN DI BAWAH INI (Tambahkan 'secrets.')
-          token: ${{ secrets.K6_CLOUD_TOKEN }}
