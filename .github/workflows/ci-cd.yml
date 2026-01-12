@@ -5,8 +5,9 @@ on:
     branches: [ "main" ]
 
 jobs:
-  performance-test:
+  test:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+    - uses: actions/checkout@v4
+    - name: Run echo test
+      run: echo "CI/CD berhasil jalan 🚀"
