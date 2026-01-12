@@ -1,8 +1,8 @@
-name: Load Test Website
+name: Basic CI
 
 on:
   push:
-    branches: [ "main" ] # Jalan setiap ada update di main branch
+    branches: [ "main" ]
 
 jobs:
   performance-test:
@@ -16,4 +16,5 @@ jobs:
         with:
           filename: script.js
           cloud: true
-          token: ${{ K6_CLOUD_TOKEN }} # HARUS DI SINI
+          # PERBAIKAN DI BAWAH INI (Tambahkan 'secrets.')
+          token: ${{ secrets.K6_CLOUD_TOKEN }}
