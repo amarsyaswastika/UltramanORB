@@ -16,4 +16,4 @@ jobs:
         with:
           filename: script.js
           cloud: true
-          token: ${{ secrets.K6_CLOUD_TOKEN }} # HARUS DI SINI
+          token: ${{ K6_CLOUD_TOKEN }} # HARUS DI SINI
