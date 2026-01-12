@@ -1,13 +1,19 @@
-name: Basic CI
+name: Load Test Website
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main" ] # Jalan setiap ada update di main branch
 
 jobs:
-  test:
+  performance-test:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
-    - name: Run echo test
-      run: echo "CI/CD berhasil jalan 🚀"
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run k6 cloud test
+        uses: grafana/k6-action@v0.3.0
+        with:
+          filename: script.js # Sesuaikan dengan nama file di Langkah 3
+          cloud: true
+          token: ${{ secrets.K6_CLOUD_TOKEN }} # Mengambil dari Secret Langkah 2
