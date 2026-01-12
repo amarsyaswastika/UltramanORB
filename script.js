@@ -4,8 +4,8 @@ import { sleep } from 'k6';
 export const options = {
   // Skenario: Naikkan traffic ke 20 user dalam 30 detik, tahan 1 menit, lalu turun.
   stages: [
-    { duration: '30s', target: 20 }, // Simulasi 20 orang masuk
-    { duration: '1m', target: 20 },  // Tahan 20 orang selama 1 menit
+    { duration: '30s', target: 50 }, // Simulasi 20 orang masuk
+    { duration: '1m', target: 45 },  // Tahan 20 orang selama 1 menit
     { duration: '10s', target: 0 },  // Orang-orang keluar
   ],
   cloud: {
